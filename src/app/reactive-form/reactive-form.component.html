@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formData2">
+    Name: <input type="text"  formControlName="name"/>
+    <div *ngIf="!formData2.controls.name.valid" style="color: red;">
+        Tên chưa được nhập!
+    </div>
+    <br>
+    Age: <input type="text"  formControlName="age"/>
+    <div *ngIf="!formData2.controls.name.valid" style="color: red;">
+        Tuổi chưa được nhập!
+    </div>
+    <br>
+    <button type="submit" [disabled]="!formData2.valid">Submit 2</button>
+</form>
+
+<!-- [disabled]="!formData2.valid" sử dụng khi chưa nhập data thì sẽ ẩn mục đó đi, khi nhập vào rồi sẽ hiện lên -->

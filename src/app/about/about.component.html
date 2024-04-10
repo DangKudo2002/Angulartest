@@ -1,1 +1,15 @@
-<p>about works!</p>
+<p appHighLight style="width: 200px;">ngSwitchCase</p>
+<ul [ngSwitch]="loginName">
+    <li *ngSwitchCase="'user'">
+        <p>User</p>
+    </li>
+    <li *ngSwitchCase="'admin'">
+        <p>Admin</p>
+    </li>
+    <li *ngSwitchDefault>
+        <p>Default</p>
+    </li>
+</ul>
+<span>Dem : {{dem}}</span>
+<br>
+<span>Dem ^ 2 : {{ counterBinhPhuong }}</span>

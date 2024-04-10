@@ -1,1 +1,70 @@
+<!-- Data-Biding -->
 <h1>Hello Mr {{ name }}</h1>
+<input value="{{name}}">
+<br>
+<input [value]="name" title="Đây là {{ name }}" style="cursor: pointer;" />
+
+<!-- Sử dụng If-Else -->
+<h2 *ngIf="age > 18">Bạn đã già rồi!</h2>
+<h2 *ngIf="age <= 18">Bạn đang còn trẻ nhỉ!</h2>
+
+<!-- Event-Biding_ngModule_Two-Way -->
+<input type="text" [(ngModel)]="name" />
+<button (click)="resetName()">Reset</button>
+
+<!-- if-then-else ng-temple-->
+<br>
+<br>
+<input type="text" [(ngModel)]="age">
+<h3>Tuoi ban la {{ age }}</h3>
+<h2 *ngIf="age > 18">Bạn đã già rồi!</h2>
+<h2 *ngIf="age <= 18">Bạn đang còn trẻ nhỉ!</h2>
+<div *ngIf="age <= 18; then tre; else gia"></div>
+<ng-template #tre>
+    <h2>Bạn đang còn trẻ nhỉ!</h2>
+</ng-template>
+<ng-template #gia>Bạn đã già rồi!</ng-template>
+
+<!-- ngFor [ngClass]-->
+<h2>Trái cây</h2>
+<div *ngFor="let trai of traicay; let i = index">
+    <li>{{i}}.{{ trai }}</li>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Thứ tự</th>
+        <th>Tên</th>
+        <th>Giá</th>
+        <html>Hạ giá
+
+        </html>
+
+    </tr>
+    <tr *ngFor="let trai of traicay1; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{ trai.Ten | uppercase }}</td>
+        <td>
+            <span [ngClass]="{'so-am': trai.gia < 0 }">{{ trai.gia | currency: "VND":"symbol":"1.2"}}</span>
+        </td>
+        <td>
+            {{ trai.haGia | onsale}} <!-- Pipe -->
+        </td>
+    </tr>
+</table>
+
+<!-- cascading combobox -->
+Tỉnh / Thanh Phố:
+<select id="citis" (change)="Onchange($event)">
+    <option *ngFor="let data of cities" value="{{ data.city }}">{{ data.city }}</option>
+</select>
+Quận / Huyện:
+<select id="district" (change)="Onchange($event)">
+    <option *ngFor="let data1 of district" value="district"> {{ district}}</option>
+</select>
+
+<!-- routing -->
+<!-- sevices -->
+<span>Dem: {{ dem }}</span>
+<br>
+<span>Dem ^2: {{ couterBinhphuong }}</span>
